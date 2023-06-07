@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="cmtModelStoreContainer" CdmEntityContainer="cmtEntities">
+    <EntitySetMapping Name="news">
+      <EntityTypeMapping TypeName="cmtModel.News">
+        <MappingFragment StoreEntitySet="news">
+          <ScalarProperty Name="n_parent_type" ColumnName="n_parent_type" />
+          <ScalarProperty Name="n_url" ColumnName="n_url" />
+          <ScalarProperty Name="n_brief" ColumnName="n_brief" />
+          <ScalarProperty Name="n_modified_date" ColumnName="n_modified_date" />
+          <ScalarProperty Name="n_modifier" ColumnName="n_modifier" />
+          <ScalarProperty Name="n_create_date" ColumnName="n_create_date" />
+          <ScalarProperty Name="n_creator" ColumnName="n_creator" />
+          <ScalarProperty Name="n_is_public" ColumnName="n_is_public" />
+          <ScalarProperty Name="n_end_date" ColumnName="n_end_date" />
+          <ScalarProperty Name="n_start_date" ColumnName="n_start_date" />
+          <ScalarProperty Name="n_picture" ColumnName="n_picture" />
+          <ScalarProperty Name="n_content" ColumnName="n_content" />
+          <ScalarProperty Name="n_title" ColumnName="n_title" />
+          <ScalarProperty Name="n_type" ColumnName="n_type" />
+          <ScalarProperty Name="n_id" ColumnName="n_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="news_file">
+      <EntityTypeMapping TypeName="cmtModel.NewsFile">
+        <MappingFragment StoreEntitySet="news_file">
+          <ScalarProperty Name="nf_modified_date" ColumnName="nf_modified_date" />
+          <ScalarProperty Name="nf_modifier" ColumnName="nf_modifier" />
+          <ScalarProperty Name="nf_create_date" ColumnName="nf_create_date" />
+          <ScalarProperty Name="nf_creator" ColumnName="nf_creator" />
+          <ScalarProperty Name="nf_n_id" ColumnName="nf_n_id" />
+          <ScalarProperty Name="nf_name" ColumnName="nf_name" />
+          <ScalarProperty Name="nf_id" ColumnName="nf_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="cmtModel.User">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="u_modified_date" ColumnName="u_modified_date" />
+          <ScalarProperty Name="u_modifier" ColumnName="u_modifier" />
+          <ScalarProperty Name="u_create_date" ColumnName="u_create_date" />
+          <ScalarProperty Name="u_creator" ColumnName="u_creator" />
+          <ScalarProperty Name="u_email" ColumnName="u_email" />
+          <ScalarProperty Name="u_name" ColumnName="u_name" />
+          <ScalarProperty Name="u_password" ColumnName="u_password" />
+          <ScalarProperty Name="u_account" ColumnName="u_account" />
+          <ScalarProperty Name="u_type" ColumnName="u_type" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="knowledge">
+      <EntityTypeMapping TypeName="cmtModel.Knowledge">
+        <MappingFragment StoreEntitySet="knowledge">
+          <ScalarProperty Name="k_brief" ColumnName="k_brief" />
+          <ScalarProperty Name="k_modified_date" ColumnName="k_modified_date" />
+          <ScalarProperty Name="k_modifier" ColumnName="k_modifier" />
+          <ScalarProperty Name="k_create_date" ColumnName="k_create_date" />
+          <ScalarProperty Name="k_creator" ColumnName="k_creator" />
+          <ScalarProperty Name="k_is_public" ColumnName="k_is_public" />
+          <ScalarProperty Name="k_end_date" ColumnName="k_end_date" />
+          <ScalarProperty Name="k_start_date" ColumnName="k_start_date" />
+          <ScalarProperty Name="k_picture" ColumnName="k_picture" />
+          <ScalarProperty Name="k_content" ColumnName="k_content" />
+          <ScalarProperty Name="k_title" ColumnName="k_title" />
+          <ScalarProperty Name="k_type" ColumnName="k_type" />
+          <ScalarProperty Name="k_id" ColumnName="k_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="knowledge_file">
+      <EntityTypeMapping TypeName="cmtModel.KnowledgeFile">
+        <MappingFragment StoreEntitySet="knowledge_file">
+          <ScalarProperty Name="kf_k_id" ColumnName="kf_k_id" />
+          <ScalarProperty Name="kf_modified_date" ColumnName="kf_modified_date" />
+          <ScalarProperty Name="kf_modifier" ColumnName="kf_modifier" />
+          <ScalarProperty Name="kf_create_date" ColumnName="kf_create_date" />
+          <ScalarProperty Name="kf_creator" ColumnName="kf_creator" />
+          <ScalarProperty Name="kf_name" ColumnName="kf_name" />
+          <ScalarProperty Name="kf_id" ColumnName="kf_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="log">
+      <EntityTypeMapping TypeName="cmtModel.Log">
+        <MappingFragment StoreEntitySet="log">
+          <ScalarProperty Name="l_create_date" ColumnName="l_create_date" />
+          <ScalarProperty Name="l_account" ColumnName="l_account" />
+          <ScalarProperty Name="l_ip" ColumnName="l_ip" />
+          <ScalarProperty Name="l_message" ColumnName="l_message" />
+          <ScalarProperty Name="l_url" ColumnName="l_url" />
+          <ScalarProperty Name="l_Method" ColumnName="l_Method" />
+          <ScalarProperty Name="l_level" ColumnName="l_level" />
+          <ScalarProperty Name="l_id" ColumnName="l_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodeTable">
+      <EntityTypeMapping TypeName="cmtModel.CodeTable">
+        <MappingFragment StoreEntitySet="CodeTable">
+          <ScalarProperty Name="CT_remark" ColumnName="CT_remark" />
+          <ScalarProperty Name="CT_mod_date" ColumnName="CT_mod_date" />
+          <ScalarProperty Name="CT_mod_user" ColumnName="CT_mod_user" />
+          <ScalarProperty Name="CT_enabled" ColumnName="CT_enabled" />
+          <ScalarProperty Name="CT_order" ColumnName="CT_order" />
+          <ScalarProperty Name="CT_relationvalue" ColumnName="CT_relationvalue" />
+          <ScalarProperty Name="CT_relationtype" ColumnName="CT_relationtype" />
+          <ScalarProperty Name="CT_desc" ColumnName="CT_desc" />
+          <ScalarProperty Name="CT_value" ColumnName="CT_value" />
+          <ScalarProperty Name="CT_typedesc" ColumnName="CT_typedesc" />
+          <ScalarProperty Name="CT_type" ColumnName="CT_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,70 @@
+﻿@using X.PagedList.Mvc;
+@using X.PagedList.Mvc.Common;
+
+@model cmt.ViewModels.DomesticVM
+
+@{
+    ViewBag.Title = "台灣循環材料展示館-日常展專區";
+}
+
+<section id="header">
+    <div class="backoverlay">
+        <div class="bread">
+            <span class="blinditem whiteColor"><a href="#" accesskey="R" title="右方內容區塊">:::</a></span>
+            <span><a href="https://www.cmvm.org.tw">首頁</a> > 日常展專區</span>
+        </div>
+        <div class="title">
+            <span class="blinditem whiteColor font04"><a href="#" accesskey="C" title="中央內容區塊">:::</a></span>
+            <h1>日常展專區</h1>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container MT30">
+        <h3><a href='@Url.Action("IntelliTech", "Exhibition", new {}, Request.Url.Scheme)'>1.循環材料智慧科技</a></h3>
+        <div class="row MT10 MB20">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../Content/images/img-screen-01.png" class="img-responsive" title="區塊鏈特色" alt="區塊鏈特色縮圖" />
+                    <div class="font03 MT10"><a href='@Url.Action("PageExhibitionNormal01", "Exhibition", new {}, Request.Url.Scheme)'>區塊鏈特色</a></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../Content/images/img-screen-02.png" class="img-responsive" title="區塊鏈在循環材料領域的應用" alt="區塊鏈在循環材料領域的應用縮圖" />
+                    <div class="font03 MT10"><a href='@Url.Action("PageExhibitionNormal02", "Exhibition", new {}, Request.Url.Scheme)'>區塊鏈在循環材料領域的應用</a></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../Content/images/img-screen-03.png" class="img-responsive" title="智慧追蹤" alt="智慧追蹤縮圖" />
+                    <div class="font03 MT10"><a href='@Url.Action("PageExhibitionNormal03", "Exhibition", new {}, Request.Url.Scheme)'>智慧追蹤</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="row MT10 MB30">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../Content/images/img-screen-04.png" class="img-responsive" title="AI視覺辨識技術" alt="AI視覺辨識技術縮圖" />
+                    <div class="font03 MT10"><a href='@Url.Action("PageExhibitionNormal04", "Exhibition", new {}, Request.Url.Scheme)'>AI視覺辨識技術</a></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../Content/images/img-screen-05.png" class="img-responsive" title="產品驗證" alt="產品驗證縮圖" />
+                    <div class="font03 MT10"><a href='@Url.Action("PageExhibitionNormal05", "Exhibition", new {}, Request.Url.Scheme)'>產品驗證</a></div>
+                </div>
+            </div>
+        </div>
+        <h3><a href='@Url.Action("ChemicalTrading", "Exhibition", new {}, Request.Url.Scheme)'>2.化學品交易</a></h3>
+        <div class="row MT10">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../Content/images/img-screen-06.png" class="img-responsive" title="化學品交易" alt="化學品交易縮圖" />
+                    <div class="font03 MT10"><a href='@Url.Action("PageExhibitionNormal06", "Exhibition", new {}, Request.Url.Scheme)'>化學品交易</a></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

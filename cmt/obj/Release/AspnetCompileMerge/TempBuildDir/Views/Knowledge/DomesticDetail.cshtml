@@ -1,0 +1,76 @@
+﻿@model cmt.ViewModels.DomesticDetailVM
+
+@{
+    ViewBag.Title = "台灣循環材料展示館-國內文獻";
+}
+
+<section id="header">
+    <div class="backoverlay">
+        <div class="bread">
+            <span class="blinditem whiteColor"><a href="#" accesskey="R" title="右方內容區塊">:::</a></span>
+            <span>國內文獻</span>
+        </div>
+        <div class="title">
+            <span class="blinditem whiteColor font04"><a href="#" accesskey="C" title="中央內容區塊">:::</a></span>
+            <h1>國內文獻</h1>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+
+        <div class="modal-body">
+            <table width="100%" border="0" class="table-colored">
+                <tbody>
+                    <tr>
+                        <td width="14%" align="right">標題:</td>
+                        <td>
+                            @Html.DisplayFor(model => model.Title)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">內容:</td>
+                        <td>
+                            <div class="input-group">
+                                @Html.Raw(Model.Content)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">日期:</td>
+                        <td>
+                            <div class="input-group">
+                                @Html.DisplayFor(model => model.Start_date, "{0:yyyy/MM/dd}")
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">附件:</td>
+                        <td>
+                            <div class="input-group">
+                                <table>
+                                    <tr>
+                                        @foreach (var item in Model.Attaches)
+                                        {
+                                            <td>
+                                                <a href="@Url.Action("DownloadFile", new { id = Model.Id, fileName = item.Name })">@item.Name</a>
+                                            </td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.TempId)
+            <button type="button" class="btn_del" onclick="window.location='@Url.Action("Domestic")'">返回</button>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+}

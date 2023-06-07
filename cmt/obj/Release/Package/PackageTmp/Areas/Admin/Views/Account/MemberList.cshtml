@@ -1,0 +1,68 @@
+﻿@model List<cmt.ViewModels.UserLoginVM>
+@{
+    ViewBag.Title = "Manager";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section id="header">
+    <div class="backoverlay">
+        <div class="bread">
+            <span class="blinditem whiteColor"><a href="#" accesskey="R" title="右方內容區塊">:::</a></span>
+            <span>會員管理</span>
+        </div>
+        <div class="title">
+            <span class="blinditem whiteColor font04"><a href="#" accesskey="C" title="中央內容區塊">:::</a></span>
+            <span class="font00 font-bold">會員管理</span>
+        </div>
+    </div>
+</section>
+
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="twocolblock">
+                    <button type="button" class="MT20 btn01 right" onclick="location.href='@Url.Action("MemberEdit", "Account")'">新增</button>
+                </div>
+                <table width="100%" border="0" class="table-container table-colored MT10">
+                    <thead>
+                        <tr>
+                            <th>帳號</th>
+                            <th>使用者名稱</th>
+                            <th>公司名稱</th>
+                            <th>Email</th>
+                            <th>啟用</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ 
+                                foreach (var m in Model)
+                                {
+                                var IsEnabled = m.IsEnabled ? "是":"否";
+                                  <tr>
+                                      <td align="center">@m.UserAccount</td>
+                                      <td align="center">@m.UserNickname</td>
+                                      <td align="center">@m.Company</td>
+                                      <td align="center">@m.UserEmail</td>
+                                      <td align="center">@IsEnabled</td>
+                                      <td align="center">
+                                          @using (Html.BeginForm())
+                                          {
+                                              <button type="button" class="btn01" onclick="location.href='@Url.Action("MemberEdit", "Account", new { Guid = m.UserGuid })'">編輯</button>
+
+                                              <button style="display:none" type="submit" class="btn_del ML5" onclick="return confirm('確定要刪除嗎?');" formaction="MemberDelete?Guid=@m.UserGuid" formmethod="post">刪除</button>
+
+                                          }
+                                          </td>
+                                  </tr>
+                                }
+                            }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</section>

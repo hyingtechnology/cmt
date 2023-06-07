@@ -1,0 +1,243 @@
+﻿@model cmt.ViewModels.IndexVM
+
+@{
+    ViewBag.Title = "台灣循環材料展示館";
+    ViewBag.CentralBlock = "c";
+}
+<section id="slider-section-01">
+    <div class="bread" style="position: absolute; right: 2%; z-index: 999;">
+        <span class="blinditem whiteColor"><a href="#" accesskey="R" title="右方內容區塊">:::</a></span>
+        <span><a href='@Url.Action("Index", "Home", new {}, Request.Url.Scheme)'>首頁</a></span>
+    </div>
+    <div id="captioned-gallery">
+        <figure id="slider" slider="1" class="owl-carousel owl-theme">
+            <figure>
+                <a href='https://www.ey.gov.tw/Page/5B2FC62D288F4DB7/c243b53c-42be-40ec-9644-6d00e138886e'  target="_blank" rel="noopener noreferrer"><img   src="@Url.Content("~/Content/images/COVID-19_0.Png")" alt="COVID-19防治及紓困預算" title="COVID-19防治及紓困預算" /></a>
+                <figcaption>COVID-19防治及紓困預算</figcaption>
+            </figure>
+            <figure>
+                <a href='@Url.Action("EventDetail", "News", new {id = 87}, Request.Url.Scheme)'><img src="@Url.Content("~/Content/images/slider-img-8.png")" alt="動靜脈產業串連思維 引導應用資通訊科技強化污泥資源化再利用方向" title="動靜脈產業串連思維 引導應用資通訊科技強化污泥資源化再利用方向" /></a>
+                <figcaption>動靜脈產業串連思維 引導應用資通訊科技強化污泥資源化再利用方向</figcaption>
+            </figure>
+            <figure>
+                <a href='@Url.Action("EventDetail", "News", new {id = 87}, Request.Url.Scheme)'><img src="@Url.Content("~/Content/images/slider-img-7.png")" alt="鋼鐵產業集思廣益 共商無機粒料大未來" title="鋼鐵產業集思廣益 共商無機粒料大未來" /></a>
+                <figcaption>鋼鐵產業集思廣益 共商無機粒料大未來</figcaption>
+            </figure>
+            <figure>
+                <a href='https://www.idbevent.org.tw/events/event_more?id=0542804095b841a7bfa5e4eabcab78c5'><img src="@Url.Content("~/Content/images/slider-img-6.png")" alt="應用資通訊科技強化污泥資源化再利用論壇" title="應用資通訊科技強化污泥資源化再利用論壇" /></a>
+                <figcaption>應用資通訊科技強化污泥資源化再利用論壇</figcaption>
+            </figure>
+            <figure>
+                <a href='@Url.Action("EventDetail", "News", new {id = 80}, Request.Url.Scheme)'><img src="@Url.Content("~/Content/images/slider-img-4.png")" alt="AI物料辨識技術超吸睛" title="AI物料辨識技術超吸睛" /></a>
+                <figcaption>AI物料辨識技術超吸睛</figcaption>
+            </figure>
+            <figure>
+                <a href='@Url.Action("PageIdea", "Home", new {}, Request.Url.Scheme)'><img src="@Url.Content("~/Content/images/slider-img-1.png")" alt="前往核心理念" title="核心理念" /></a>
+                <figcaption>前往核心理念</figcaption>
+            </figure>
+            <figure>
+                <a href='@Url.Action("IntelliTech", "Exhibition", new {}, Request.Url.Scheme)'><img src="@Url.Content("~/Content/images/slider-img-2.png")" alt="前往循環材料智慧科技主題展" title="循環材料智慧科技主題展" /></a>
+                <figcaption>前往循環材料智慧科技主題展</figcaption>
+            </figure>
+            <figure>
+                <a href='@Url.Action("ChemicalTrading", "Exhibition", new {}, Request.Url.Scheme)'><img src="@Url.Content("~/Content/images/slider-img-3.png")" alt="前往化學品交易主題展" title="化學品交易主題展" /></a>
+                <figcaption>前往化學品交易主題展</figcaption>
+            </figure>
+        </figure>
+
+
+
+    </div>
+</section>
+<section id="index-section-02">
+    <div class="container">
+        <div class="text-center MB30" id="c">
+            <span class="blinditem greyColor font04"><a href="#" accesskey="C" title="中央內容區塊">:::</a></span>
+            <h2>
+                <div class="circle bggrey">最</div>
+                新消息
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 MB10">
+                <div class="card-normal match">
+                    @foreach (var item in Model.Events)
+                    {
+                        <div class="vertical-align twocolblock">
+                            <div class="left MR10">
+                                <img src="@Url.Action("GetNewsPicture", "Home", new { id = item.Id, fileName = item.Picture })" title="@item.Title" alt="@item.Title" class="img-radius img-responsive MB10" />
+                            </div>
+                            <div class="left">
+                                <div class="greenColor font04 font-bold MB5">活動紀實</div>
+                                <div class="greyColor font02 font-bold"><a href='@Url.Action("EventDetail", "News", new { id = item.Id}, Request.Url.Scheme)'>@item.Title</a></div>
+                            </div>
+                        </div>
+                        <p class="lineheight01 greyColor font03">@item.Brief</p>
+                    }
+                    <div class="alignRight">
+                        <button type="button" class="btn01" onclick="window.location='@Url.Action("Event", "News")'">更多</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="match">
+                    @foreach (var item in Model.Industrys)
+                    {
+                        <div class="newslist MB10">
+                            <a href='@item.Url'>
+                                <div class="card-photobg">
+                                    <div class="whiteColor font04 font-bold MB5">產業新聞</div>
+                                    <div class="whiteColor font02 font-bold">@item.Title</div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<section id="index-section-03">
+        <div class="container">
+            @foreach (var item in Model.Knowledges)
+            {
+                <div class="row vertical-align">
+                    <div class="col-md-6 col-sm-12">
+                        <img src="@Url.Action("GetNewsPicture", "Home", new { id = item.Id, fileName = item.Picture }, Request.Url.Scheme)" title="@item.Title" alt="@item.Title" class="img-responsive MB10 img-center" width="500" />
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="circle bggreen">新</div>
+                        <span class="font-bold font01 whiteColor">知看板</span>
+                        <div class="whiteColor font02 MT20">@item.Title</div>
+                        <p class="lineheight01 whiteColor font03 MT10">@item.Brief</p>
+                        <button type="button" class="btn02 MT20" onclick="window.location='@Url.Action("Knowledge", "News")'">更多</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>*@
+<section id="index-section-04">
+    <div class="fixwidth">
+        <div class="container">
+
+            <div class="pc-tab">
+                <input checked="checked" id="tab1" type="radio" name="pct" />
+                <label for="tab1" style="display:none">影音專區</label>
+                <section>
+                    <div class="card-header">
+                        <h2><span class="title whiteColor" id="title01">影音專區</span></h2>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card-body-inner">
+
+                            <div class="tab tab1">
+                                <div slider="2" class="owl-carousel owl-theme">
+                                    <div class="item">
+                                        <a href="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fmoeaidb%2Fvideos%2F615798665770342%2F&show_text=0&width=560" target="_blank" rel="noopener noreferrer"><img src="@Url.Content("~/Content/images/video04.png")" title="台灣創新技術博覽會" alt="前往影片" /></a>
+                                        <center>
+                                            <div class="video-title">台灣創新技術博覽會</div>
+                                        </center>
+                                    </div>
+                                    <div class="item">
+                                        <a href="https://www.youtube.com/watch?v=E6Nzf-1W9fw" target="_blank" rel="noopener noreferrer"><img src="@Url.Content("~/Content/images/video01.png")" title="化學品租賃國際案例分享" alt="前往影片" /></a>
+                                        <center>
+                                            <div class="video-title">化學品租賃國際案例分享</div>
+                                        </center>
+                                    </div>
+                                    <div class="item">
+                                        <a href="https://www.youtube.com/watch?v=12ApTiOlMXY" target="_blank" rel="noopener noreferrer"><img src="@Url.Content("~/Content/images/video02.png")" title="租賃服務經驗分享" alt="前往影片" /></a>
+                                        <center>
+                                            <div class="video-title">租賃服務經驗分享</div>
+                                        </center>
+                                    </div>
+                                    <div class="item">
+                                        <a href="https://www.youtube.com/watch?v=Xrbr6Khqs1w" target="_blank" rel="noopener noreferrer"><img src="@Url.Content("~/Content/images/video03.png")" title="化學品管理與驗證介紹" alt="前往影片" /></a>
+                                        <center>
+                                            <div class="video-title">化學品管理與驗證介紹</div>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer"></div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<section id="index-section-05">
+        <div class="container">
+            <div class="text-center MB30">
+                <div class="circle bggrey">成</div>
+                <span class="font-bold font01 whiteColor">果數據</span>
+            </div>
+            <div class="row" id="unique-id">
+                <div class="col-md-4 col-sm-12 MB10">
+                    <div class="card-radius card-image-04">
+                        <div class="twocolblock">
+                            <div class="left shape"></div>
+                            <div class="right tag-radius">廢棄物處理量</div>
+                        </div>
+                        <div class="MB10 MT60">
+                            <div class="font00 font-bold greenColor text-center" id="myTargetElement">0</div>
+                            <div class="font03 greyColor text-center">噸</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 MB10">
+                    <div class="card-radius card-image-05">
+                        <div class="twocolblock">
+                            <div class="left shape"></div>
+                            <div class="right tag-radius">減碳量</div>
+                        </div>
+                        <div class="MB10 MT60">
+                            <div class="font00 font-bold greenColor text-center" id="myTargetElement2">0</div>
+                            <div class="font03 greyColor text-center">噸</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 MB10">
+                    <div class="card-radius card-image-06">
+                        <div class="twocolblock">
+                            <div class="left shape"></div>
+                            <div class="right tag-radius">平台媒合數</div>
+                        </div>
+                        <div class="MB10 MT60">
+                            <div class="font00 font-bold greenColor text-center" id="myTargetElement3">0</div>
+                            <div class="font03 greyColor text-center">家</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>*@
+
+@section scripts {
+    <script src="@Url.Content("~/Scripts/jquery.matchHeight.js")"></script>
+    <script src="@Url.Content("~/Scripts/owl.carousel.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/index.js")"></script>
+    <script>
+        $(function () {
+            $('.match').matchHeight({
+                byRow: true,
+                property: 'height',
+                target: null,
+                remove: false
+            });
+        });
+        $(function () {
+            $('.video-title').matchHeight({
+                byRow: true,
+                property: 'height',
+                target: null,
+                remove: false
+            });
+        });
+    </script>
+}

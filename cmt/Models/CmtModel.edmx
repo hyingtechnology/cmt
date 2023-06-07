@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="cmtModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CodeTable">
+          <Key>
+            <PropertyRef Name="CT_type" />
+            <PropertyRef Name="CT_value" />
+          </Key>
+          <Property Name="CT_type" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CT_typedesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="CT_value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CT_desc" Type="nvarchar" MaxLength="200" />
+          <Property Name="CT_relationtype" Type="nvarchar" MaxLength="30" />
+          <Property Name="CT_relationvalue" Type="nvarchar" MaxLength="30" />
+          <Property Name="CT_order" Type="int" />
+          <Property Name="CT_enabled" Type="bit" />
+          <Property Name="CT_mod_user" Type="nvarchar" MaxLength="30" />
+          <Property Name="CT_mod_date" Type="nvarchar" MaxLength="10" />
+          <Property Name="CT_remark" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="knowledge">
+          <Key>
+            <PropertyRef Name="k_id" />
+          </Key>
+          <Property Name="k_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="k_type" Type="int" Nullable="false" />
+          <Property Name="k_title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="k_brief" Type="nvarchar" MaxLength="100" />
+          <Property Name="k_content" Type="nvarchar(max)" />
+          <Property Name="k_picture" Type="nvarchar" MaxLength="50" />
+          <Property Name="k_start_date" Type="datetime" />
+          <Property Name="k_end_date" Type="datetime" />
+          <Property Name="k_is_public" Type="bit" Nullable="false" />
+          <Property Name="k_creator" Type="nvarchar" MaxLength="50" />
+          <Property Name="k_create_date" Type="datetime" />
+          <Property Name="k_modifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="k_modified_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="knowledge_file">
+          <Key>
+            <PropertyRef Name="kf_id" />
+          </Key>
+          <Property Name="kf_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kf_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kf_k_id" Type="int" Nullable="false" />
+          <Property Name="kf_creator" Type="nvarchar" MaxLength="50" />
+          <Property Name="kf_create_date" Type="datetime" />
+          <Property Name="kf_modifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="kf_modified_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="l_id" />
+          </Key>
+          <Property Name="l_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="l_level" Type="nvarchar" MaxLength="10" />
+          <Property Name="l_Method" Type="nvarchar" MaxLength="10" />
+          <Property Name="l_url" Type="nvarchar" MaxLength="200" />
+          <Property Name="l_message" Type="nvarchar(max)" />
+          <Property Name="l_ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="l_account" Type="nvarchar" MaxLength="50" />
+          <Property Name="l_create_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="n_id" />
+          </Key>
+          <Property Name="n_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="n_type" Type="int" Nullable="false" />
+          <Property Name="n_title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="n_brief" Type="nvarchar" MaxLength="100" />
+          <Property Name="n_content" Type="nvarchar(max)" />
+          <Property Name="n_picture" Type="nvarchar" MaxLength="50" />
+          <Property Name="n_url" Type="nvarchar" MaxLength="300" />
+          <Property Name="n_start_date" Type="datetime" />
+          <Property Name="n_end_date" Type="datetime" />
+          <Property Name="n_is_public" Type="bit" Nullable="false" />
+          <Property Name="n_creator" Type="nvarchar" MaxLength="50" />
+          <Property Name="n_create_date" Type="datetime" />
+          <Property Name="n_modifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="n_modified_date" Type="datetime" />
+          <Property Name="n_parent_type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="news_file">
+          <Key>
+            <PropertyRef Name="nf_id" />
+          </Key>
+          <Property Name="nf_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nf_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nf_n_id" Type="int" Nullable="false" />
+          <Property Name="nf_creator" Type="nvarchar" MaxLength="50" />
+          <Property Name="nf_create_date" Type="datetime" />
+          <Property Name="nf_modifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="nf_modified_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_type" Type="int" Nullable="false" />
+          <Property Name="u_account" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_password" Type="nvarchar" MaxLength="100" />
+          <Property Name="u_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="u_email" Type="nvarchar" MaxLength="100" />
+          <Property Name="u_creator" Type="nvarchar" MaxLength="50" />
+          <Property Name="u_create_date" Type="datetime" />
+          <Property Name="u_modifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="u_modified_date" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="cmtModelStoreContainer">
+          <EntitySet Name="CodeTable" EntityType="Self.CodeTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="knowledge" EntityType="Self.knowledge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="knowledge_file" EntityType="Self.knowledge_file" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="log" EntityType="Self.log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="news" EntityType="Self.news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="news_file" EntityType="Self.news_file" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cmtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="cmtEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="news" EntityType="cmtModel.News" />
+          <EntitySet Name="news_file" EntityType="cmtModel.NewsFile" />
+          <EntitySet Name="user" EntityType="cmtModel.User" />
+          <EntitySet Name="knowledge" EntityType="cmtModel.Knowledge" />
+          <EntitySet Name="knowledge_file" EntityType="cmtModel.KnowledgeFile" />
+          <EntitySet Name="log" EntityType="cmtModel.Log" />
+          <EntitySet Name="CodeTable" EntityType="cmtModel.CodeTable" />
+        </EntityContainer>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="n_id" />
+          </Key>
+          <Property Name="n_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="n_type" Type="Int32" Nullable="false" />
+          <Property Name="n_title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="n_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="n_picture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="n_start_date" Type="DateTime" Precision="3" />
+          <Property Name="n_end_date" Type="DateTime" Precision="3" />
+          <Property Name="n_is_public" Type="Boolean" Nullable="false" />
+          <Property Name="n_creator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="n_create_date" Type="DateTime" Precision="3" />
+          <Property Name="n_modifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="n_modified_date" Type="DateTime" Precision="3" />
+          <Property Name="n_brief" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="n_url" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="n_parent_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NewsFile">
+          <Key>
+            <PropertyRef Name="nf_id" />
+          </Key>
+          <Property Name="nf_id" Type="Int32" Nullable="false" />
+          <Property Name="nf_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nf_n_id" Type="Int32" Nullable="false" />
+          <Property Name="nf_creator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nf_create_date" Type="DateTime" Precision="3" />
+          <Property Name="nf_modifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nf_modified_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_type" Type="Int32" Nullable="false" />
+          <Property Name="u_account" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="u_password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="u_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="u_email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="u_creator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="u_create_date" Type="DateTime" Precision="3" />
+          <Property Name="u_modifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="u_modified_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Knowledge">
+          <Key>
+            <PropertyRef Name="k_id" />
+          </Key>
+          <Property Name="k_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="k_type" Type="Int32" Nullable="false" />
+          <Property Name="k_title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="k_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="k_picture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="k_start_date" Type="DateTime" Precision="3" />
+          <Property Name="k_end_date" Type="DateTime" Precision="3" />
+          <Property Name="k_is_public" Type="Boolean" Nullable="false" />
+          <Property Name="k_creator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="k_create_date" Type="DateTime" Precision="3" />
+          <Property Name="k_modifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="k_modified_date" Type="DateTime" Precision="3" />
+          <Property Name="k_brief" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="KnowledgeFile">
+          <Key>
+            <PropertyRef Name="kf_id" />
+          </Key>
+          <Property Name="kf_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kf_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kf_creator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kf_create_date" Type="DateTime" Precision="3" />
+          <Property Name="kf_modifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kf_modified_date" Type="DateTime" Precision="3" />
+          <Property Name="kf_k_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="l_id" />
+          </Key>
+          <Property Name="l_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="l_level" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="l_Method" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="l_url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="l_message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="l_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="l_account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="l_create_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CodeTable">
+          <Key>
+            <PropertyRef Name="CT_type" />
+            <PropertyRef Name="CT_value" />
+          </Key>
+          <Property Name="CT_type" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CT_typedesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CT_value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CT_desc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CT_relationtype" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CT_relationvalue" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CT_order" Type="Int32" />
+          <Property Name="CT_enabled" Type="Boolean" />
+          <Property Name="CT_mod_user" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CT_mod_date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CT_remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cmtModelStoreContainer" CdmEntityContainer="cmtEntities">
+          <EntitySetMapping Name="news">
+            <EntityTypeMapping TypeName="cmtModel.News">
+              <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="n_parent_type" ColumnName="n_parent_type" />
+                <ScalarProperty Name="n_url" ColumnName="n_url" />
+                <ScalarProperty Name="n_brief" ColumnName="n_brief" />
+                <ScalarProperty Name="n_modified_date" ColumnName="n_modified_date" />
+                <ScalarProperty Name="n_modifier" ColumnName="n_modifier" />
+                <ScalarProperty Name="n_create_date" ColumnName="n_create_date" />
+                <ScalarProperty Name="n_creator" ColumnName="n_creator" />
+                <ScalarProperty Name="n_is_public" ColumnName="n_is_public" />
+                <ScalarProperty Name="n_end_date" ColumnName="n_end_date" />
+                <ScalarProperty Name="n_start_date" ColumnName="n_start_date" />
+                <ScalarProperty Name="n_picture" ColumnName="n_picture" />
+                <ScalarProperty Name="n_content" ColumnName="n_content" />
+                <ScalarProperty Name="n_title" ColumnName="n_title" />
+                <ScalarProperty Name="n_type" ColumnName="n_type" />
+                <ScalarProperty Name="n_id" ColumnName="n_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="news_file">
+            <EntityTypeMapping TypeName="cmtModel.NewsFile">
+              <MappingFragment StoreEntitySet="news_file">
+                <ScalarProperty Name="nf_modified_date" ColumnName="nf_modified_date" />
+                <ScalarProperty Name="nf_modifier" ColumnName="nf_modifier" />
+                <ScalarProperty Name="nf_create_date" ColumnName="nf_create_date" />
+                <ScalarProperty Name="nf_creator" ColumnName="nf_creator" />
+                <ScalarProperty Name="nf_n_id" ColumnName="nf_n_id" />
+                <ScalarProperty Name="nf_name" ColumnName="nf_name" />
+                <ScalarProperty Name="nf_id" ColumnName="nf_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="cmtModel.User">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="u_modified_date" ColumnName="u_modified_date" />
+                <ScalarProperty Name="u_modifier" ColumnName="u_modifier" />
+                <ScalarProperty Name="u_create_date" ColumnName="u_create_date" />
+                <ScalarProperty Name="u_creator" ColumnName="u_creator" />
+                <ScalarProperty Name="u_email" ColumnName="u_email" />
+                <ScalarProperty Name="u_name" ColumnName="u_name" />
+                <ScalarProperty Name="u_password" ColumnName="u_password" />
+                <ScalarProperty Name="u_account" ColumnName="u_account" />
+                <ScalarProperty Name="u_type" ColumnName="u_type" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="knowledge">
+            <EntityTypeMapping TypeName="cmtModel.Knowledge">
+              <MappingFragment StoreEntitySet="knowledge">
+                <ScalarProperty Name="k_brief" ColumnName="k_brief" />
+                <ScalarProperty Name="k_modified_date" ColumnName="k_modified_date" />
+                <ScalarProperty Name="k_modifier" ColumnName="k_modifier" />
+                <ScalarProperty Name="k_create_date" ColumnName="k_create_date" />
+                <ScalarProperty Name="k_creator" ColumnName="k_creator" />
+                <ScalarProperty Name="k_is_public" ColumnName="k_is_public" />
+                <ScalarProperty Name="k_end_date" ColumnName="k_end_date" />
+                <ScalarProperty Name="k_start_date" ColumnName="k_start_date" />
+                <ScalarProperty Name="k_picture" ColumnName="k_picture" />
+                <ScalarProperty Name="k_content" ColumnName="k_content" />
+                <ScalarProperty Name="k_title" ColumnName="k_title" />
+                <ScalarProperty Name="k_type" ColumnName="k_type" />
+                <ScalarProperty Name="k_id" ColumnName="k_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="knowledge_file">
+            <EntityTypeMapping TypeName="cmtModel.KnowledgeFile">
+              <MappingFragment StoreEntitySet="knowledge_file">
+                <ScalarProperty Name="kf_k_id" ColumnName="kf_k_id" />
+                <ScalarProperty Name="kf_modified_date" ColumnName="kf_modified_date" />
+                <ScalarProperty Name="kf_modifier" ColumnName="kf_modifier" />
+                <ScalarProperty Name="kf_create_date" ColumnName="kf_create_date" />
+                <ScalarProperty Name="kf_creator" ColumnName="kf_creator" />
+                <ScalarProperty Name="kf_name" ColumnName="kf_name" />
+                <ScalarProperty Name="kf_id" ColumnName="kf_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="log">
+            <EntityTypeMapping TypeName="cmtModel.Log">
+              <MappingFragment StoreEntitySet="log">
+                <ScalarProperty Name="l_create_date" ColumnName="l_create_date" />
+                <ScalarProperty Name="l_account" ColumnName="l_account" />
+                <ScalarProperty Name="l_ip" ColumnName="l_ip" />
+                <ScalarProperty Name="l_message" ColumnName="l_message" />
+                <ScalarProperty Name="l_url" ColumnName="l_url" />
+                <ScalarProperty Name="l_Method" ColumnName="l_Method" />
+                <ScalarProperty Name="l_level" ColumnName="l_level" />
+                <ScalarProperty Name="l_id" ColumnName="l_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodeTable">
+            <EntityTypeMapping TypeName="cmtModel.CodeTable">
+              <MappingFragment StoreEntitySet="CodeTable">
+                <ScalarProperty Name="CT_remark" ColumnName="CT_remark" />
+                <ScalarProperty Name="CT_mod_date" ColumnName="CT_mod_date" />
+                <ScalarProperty Name="CT_mod_user" ColumnName="CT_mod_user" />
+                <ScalarProperty Name="CT_enabled" ColumnName="CT_enabled" />
+                <ScalarProperty Name="CT_order" ColumnName="CT_order" />
+                <ScalarProperty Name="CT_relationvalue" ColumnName="CT_relationvalue" />
+                <ScalarProperty Name="CT_relationtype" ColumnName="CT_relationtype" />
+                <ScalarProperty Name="CT_desc" ColumnName="CT_desc" />
+                <ScalarProperty Name="CT_value" ColumnName="CT_value" />
+                <ScalarProperty Name="CT_typedesc" ColumnName="CT_typedesc" />
+                <ScalarProperty Name="CT_type" ColumnName="CT_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

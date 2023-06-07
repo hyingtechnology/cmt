@@ -1,0 +1,51 @@
+﻿@model cmt.ViewModels.PresentationDetailVM
+
+@{
+    ViewBag.Title = "台灣循環材料展示館-成果報告";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section id="header">
+    <div class="backoverlay">
+        <div class="bread">
+            <span class="blinditem whiteColor"><a href="javaScript:void(0)" accesskey="R" title="右方內容區塊">:::</a></span>
+            <span>@Html.DisplayFor(model => model.Title)</span>
+        </div>
+        <div class="title">
+            <span class="blinditem whiteColor font04"><a href="javaScript:void(0)" accesskey="C" title="中央內容區塊">:::</a></span>
+            <h1>@Html.DisplayFor(model => model.Title)</h1>
+            @Html.DisplayFor(model => model.Start_date, "{0:yyyy/MM/dd}")
+        </div>
+    </div>
+</section>
+<section 
+    <div class="container"  style="border: 1px solid #efefef; padding: 10px; margin-top:10px;">
+
+        <div class="modal-body" style="background-color:none;width:800px;margin:0 auto; ">
+            @Html.Raw(Model.Content)
+        </div>
+        <div class="modal-footer">
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.TempId)
+            @{
+                if (Model.mode != "Preview")
+                {
+                    <button type="button" class="btn01" onclick="window.history.back()">返回</button>
+                }
+                else
+                {
+                    <button type="button" class="btn01" onclick="window.close()">關閉</button>
+                    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-3.5.1.js")"></script>
+                    <script type="text/javascript">
+                       
+                        $(document).ready(function () {
+                            $('header,footer').hide();
+                        });
+                    </script>
+                }
+            }
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,212 @@
+﻿
+@{
+    ViewBag.Title = "後臺管理中心";
+}
+
+ 
+@Styles.Render("~/Content/css")
+@Html.AntiForgeryToken()
+
+<style type="text/css">
+    footer{
+        background-color:#84CA52
+    }
+</style>
+<section id="header">
+    <div class="backoverlay">
+        <div class="bread">
+            <span class="blinditem whiteColor"><a href="#" accesskey="R" title="右方內容區塊">:::</a></span>
+            <span>後臺管理中心</span>
+        </div>
+        <div class="title">
+            <span class="blinditem whiteColor font04"><a href="#" accesskey="C" title="中央內容區塊">:::</a></span>
+            <span class="font00 font-bold">後臺管理中心</span>
+        </div>
+    </div>
+</section>
+
+<section class="content" >
+    <div class="container">
+
+        <div class="text-center MB30" id="c">
+            <span class="blinditem greyColor font04"><a href="#" accesskey="C" title="中央內容區塊">:::</a></span>
+            <h2>
+                <div class="circle bggrey">後</div>
+                臺管理
+            </h2>
+        </div>
+
+        <div class="row">
+
+
+            @{
+               // var roles = ViewData["role"].ToString().Split(',');
+
+               // foreach (var _role in roles)
+               // {
+                    var roles = ViewData["role"].ToString().ToLower();
+                    if (roles.IndexOf("Admin/News/Event".ToLower())>=0)
+                    {
+                        <div class="col-md-6 col-sm-12 MB10">
+                            <div class="match">
+
+                                <div class="newslist MB10">
+                                    <a target="_blank" rel="noopener noreferrer" href='@Url.Content("~/Admin/News/Event")'>
+                                        <div class="card-photobg">
+                                            <div class="whiteColor font01 font-bold MB5">活動紀實</div>
+                                            <div class="whiteColor font02 font-bold"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (roles.IndexOf("Admin/News/Exhibition".ToLower())>=0)
+                    {
+
+                        <div class="col-md-6 col-sm-12 MB10">
+                            <div class="match">
+
+                                <div class="newslist MB10">
+                                    <a target="_blank" rel="noopener noreferrer" href='@Url.Content("~/Admin/News/Exhibition")'>
+                                        <div class="card-photobg">
+                                            <div class="whiteColor font01 font-bold MB5">展覽公告</div>
+                                            <div class="whiteColor font02 font-bold"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (roles.IndexOf("Admin/News/Industry".ToLower())>=0)
+                    {
+                        <div class="col-md-6 col-sm-12 MB10">
+                            <div class="match">
+
+                                <div class="newslist MB10">
+                                    <a target="_blank" rel="noopener noreferrer" href='@Url.Content("~/Admin/News/Industry")'>
+                                        <div class="card-photobg">
+                                            <div class="whiteColor font01 font-bold MB5">產業新聞</div>
+                                            <div class="whiteColor font02 font-bold"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (roles.IndexOf("Admin/News/Knowledge".ToLower())>=0)
+                    {
+
+                        <div class="col-md-6 col-sm-12 MB10">
+                            <div class="match">
+
+                                <div class="newslist MB10">
+                                    <a target="_blank" rel="noopener noreferrer" href='@Url.Content("~/Admin/News/Knowledge")'>
+                                        <div class="card-photobg">
+                                            <div class="whiteColor font01 font-bold MB5">新知上架</div>
+                                            <div class="whiteColor font02 font-bold"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (roles.IndexOf("Admin/Knowledge/Domestic".ToLower())>=0)
+                    {
+
+                        <div class="col-md-6 col-sm-12 MB10">
+                            <div class="match">
+
+                                <div class="newslist MB10">
+                                    <a target="_blank" rel="noopener noreferrer" href='@Url.Content("~/Admin/Knowledge/Domestic")'>
+                                        <div class="card-photobg">
+                                            <div class="whiteColor font01 font-bold MB5">國內文獻</div>
+                                            <div class="whiteColor font02 font-bold"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (roles.IndexOf("Admin/Knowledge/Foreign".ToLower())>=0)
+                    {
+                        <div class="col-md-6 col-sm-12 MB10">
+                            <div class="match">
+
+                                <div class="newslist MB10">
+                                    <a target="_blank" rel="noopener noreferrer" href='@Url.Content("~/Admin/Knowledge/Foreign")'>
+                                        <div class="card-photobg">
+                                            <div class="whiteColor font01 font-bold MB5">國外文獻</div>
+                                            <div class="whiteColor font02 font-bold"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    if (roles.IndexOf("Admin/News/Presentation".ToLower())>=0)
+                    {
+                        <div class="col-md-6 col-sm-12 MB10">
+                            <div class="match">
+
+                                <div class="newslist MB10">
+                                    <a target="_blank" rel="noopener noreferrer" href='@Url.Content("~/Admin/News/Presentation")'>
+                                        <div class="card-photobg">
+                                            <div class="whiteColor font01 font-bold MB5">線上展覽</div>
+                                            <div class="whiteColor font02 font-bold"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (roles.IndexOf("Admin/Account/MemberList".ToLower())>=0)
+                    {
+                        <div class="col-md-6 col-sm-12 MB10">
+                            <div class="match">
+
+                                <div class="newslist MB10">
+                                    <a target="_blank" rel="noopener noreferrer" href='@Url.Content("~/Admin/Account/MemberList")'>
+                                        <div class="card-photobg">
+                                            <div class="whiteColor font01 font-bold MB5">會員管理</div>
+                                            <div class="whiteColor font02 font-bold"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (roles.IndexOf("Admin/Assign/MemberList".ToLower())>=0)
+                    {
+                        <div class="col-md-6 col-sm-12 MB10">
+                            <div class="match">
+
+                                <div class="newslist MB10">
+                                    <a target="_blank" rel="noopener noreferrer" href='@Url.Content("~/Admin/Assign/MemberList")'>
+                                        <div class="card-photobg">
+                                            <div class="whiteColor font01 font-bold MB5">派工人員設定</div>
+                                            <div class="whiteColor font02 font-bold"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+               // }
+            }
+        </div>
+    </div>
+</section>
+<script src="@Url.Content("~/Scripts/jquery-3.5.1.min.js")" crossorigin="anonymous"></script>
+<script src="@Url.Content("~/Scripts/jquery.matchHeight.js")" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+    $('.match').matchHeight({
+        byRow: true,
+        property: 'height',
+        target: null,
+        remove: false
+    });
+
+</script>

@@ -1,0 +1,105 @@
+﻿@using X.PagedList.Mvc;
+@using X.PagedList.Mvc.Common;
+
+@model cmt.Areas.Admin.ViewModels.IndustryVM
+
+@{
+    ViewBag.Title = "產業新聞";
+}
+
+@Html.AntiForgeryToken()
+<section id="header">
+    <div class="backoverlay">
+        <div class="bread">
+            <span class="blinditem whiteColor"><a href="#" accesskey="R" title="右方內容區塊">:::</a></span>
+            <span>產業新聞</span>
+        </div>
+        <div class="title">
+            <span class="blinditem whiteColor font04"><a href="#" accesskey="C" title="中央內容區塊">:::</a></span>
+            <span class="font00 font-bold">產業新聞</span>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="twocolblock">
+                    <a nonce="secret" class="MT20 btn01 right" href='@Url.Action("IndustryEdit", "News", null, Request.Url.Scheme)'>新增</a>
+                </div>
+                <table width="100%" border="0" class="table-container table-colored MT10" id="fileUpload">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.ActionLink("編號", "Industry"
+                    , new { newSort = "Id", LastSort = Model.LastSort, IsSortAsc = Model.IsSortAsc }
+                    , new { Style = "color:White;" })
+                                @Html.SortIcon("Id", Model.LastSort, Model.IsSortAsc)
+                            </th>
+                            <th>
+                                @Html.ActionLink("標題", "Industry"
+                    , new { newSort = "Title", LastSort = Model.LastSort, IsSortAsc = Model.IsSortAsc }
+                    , new { Style = "color:White;" })
+                                @Html.SortIcon("Title", Model.LastSort, Model.IsSortAsc)
+                            </th>
+                            <th>
+                                @Html.ActionLink("公開日期", "Industry"
+                    , new { newSort = "Start_date", LastSort = Model.LastSort, IsSortAsc = Model.IsSortAsc }
+                    , new { Style = "color:White;" })
+                                @Html.SortIcon("Start_date", Model.LastSort, Model.IsSortAsc)
+                            </th>
+                            <th>
+                                @Html.ActionLink("結束日期", "Industry"
+                    , new { newSort = "End_date", LastSort = Model.LastSort, IsSortAsc = Model.IsSortAsc }
+                    , new { Style = "color:White;" })
+                                @Html.SortIcon("End_date", Model.LastSort, Model.IsSortAsc)
+                            </th>
+                            <th>
+                                @Html.ActionLink("是否公開", "Industry"
+                    , new { newSort = "Is_public", LastSort = Model.LastSort, IsSortAsc = Model.IsSortAsc }
+                    , new { Style = "color:White;" })
+                                @Html.SortIcon("Is_public", Model.LastSort, Model.IsSortAsc)
+                            </th>
+                            <th nowrap>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Industries)
+                        {
+                            <tr>
+                                <td align="center">@Html.DisplayFor(modelItem => item.Id)</td>
+                                <td align="left">@Html.DisplayFor(modelItem => item.Title)</td>
+                                <td align="center">@Html.DisplayFor(modelItem => item.Start_date)</td>
+                                <td align="center">@Html.DisplayFor(modelItem => item.End_date)</td>
+                                <td align="center">@Html.DisplayFor(modelItem => item.Is_public)</td>
+                                <td align="center">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <a class="btn01" href='@Url.Action("IndustryEdit", "News", new { id = @item.Id }, Request.Url.Scheme)'>編輯</a>
+                                        <button type="submit" nonce="secret" class="btn_del ML5" onclick="return confirm('確定要刪除嗎?');" formaction="IndustryDelete?Id=@item.Id" formmethod="post">刪除</button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="MT10">
+                    <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                        @Html.PagedListPager(Model.Industries, page => Url.Action("Industry", new { page, LastSort = Model.LastSort, IsSortAsc = Model.IsSortAsc }),
+                       new PagedListRenderOptions
+                   {
+                       DisplayItemSliceAndTotal = true,
+                       ContainerDivClasses = new[] { "" },
+                       LiElementClasses = new[] { "page-item" },
+                       PageClasses = new[] { "page-link" },
+                       ItemSliceAndTotalFormat = "顯示項目: {0} ~ {1} / 共 {2} 項"
+                   })
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

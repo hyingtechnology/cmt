@@ -1,0 +1,107 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous" />
+    @Styles.Render("~/Content/admincss")
+    @Styles.Render("~/Content/tinymce")
+    <!--ICO-->
+    <link rel="Shortcut Icon" type="image/x-icon" href="@Url.Content("~/Content/images/ico/favicon.ico")" />
+    <noscript>
+        @Styles.Render("~/Content/NoJSstylecss")
+    </noscript>
+    <title>台灣循環材料展示館</title>
+    <style type="text/css">
+        footer a {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">
+                            <span class="blinditem greyColor font04"><a href="#" accesskey="U" title="上方功能區塊" class="blinditem_hack">:::</a></span>
+                            <span class="logo"><a href="@Url.Action("Index", "Home", new { Area = "" })"><img src="@Url.Content("~/Content/images/logo.png")" width="200" title="台灣循環材料展示館" alt="台灣循環材料展示館LOGO" /></a></span>
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">最新消息 <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("展覽公告", "Exhibition", "News")</li>
+                                    <li>@Html.ActionLink("產業新聞", "Industry", "News")</li>
+                                    <li>@Html.ActionLink("新知上架", "Knowledge", "News")</li>
+                                    <li>@Html.ActionLink("活動紀實", "Event", "News")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">循環知識庫 <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("國內文獻", "Domestic", "Knowledge")</li>
+                                    <li>@Html.ActionLink("國外文獻", "Foreign", "Knowledge")</li>
+                                </ul>
+                            </li>
+                            <li>
+                                @{
+                                    if (!ViewBag.isLogin)
+                                    {
+
+                                        @Html.ActionLink("登入", "ManagerCenter", "News", new { Area = "Admin" }, new { })
+                                    }
+                                    else
+                                    {
+                                        <div style="padding-top:15px;padding-bottom:15px;"><span userName="true" class="ML10 MR10">@ViewBag.NickName</span><span style="display:inline-block; margin-right:5px;">您好</span><a logOut="true" href="@Url.Content("~/Home/SingOut")">登出</a></div>
+                                    }
+                                }
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </header>
+        <div class="noscripthint redColor text-center"><h4>您的瀏覽器不支援或關閉javascript，建議開啟javascript支援或使用有支援javascript的瀏覽器以獲得更好的網頁瀏覽經驗。</h4></div>
+        @RenderBody()
+    </div><!--wrapper-->
+    @Html.Partial("~/Views/Shared/_ViewFooter.cshtml")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/unobtrusive")
+    @Scripts.Render("~/bundles/validateunobtrusive")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="@Url.Content("~/Scripts/jquery.scrollmagic.min.js")"></script>
+    @Scripts.Render("~/bundles/countUp")
+    <script src="@Url.Content("~/Scripts/tinymce/tinymce.min.js")"></script>
+
+
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+        });
+
+
+    </script>
+    <script type="text/javascript" src="https://cmvm.org.tw/Api/Scripts/CmvmOperationHistory.js" integrity="sha384-oq1uAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"
+  crossorigin="anonymous"></script>
+</body>
+</html>
+

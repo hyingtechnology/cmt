@@ -1,0 +1,90 @@
+﻿@model cmt.Areas.Admin.ViewModels.IndustryEditVM
+
+@{
+    ViewBag.Title = "產業新聞";
+}
+
+<section id="header">
+    <div class="backoverlay">
+        <div class="bread">
+            <span class="blinditem whiteColor"><a href="#" accesskey="R" title="右方內容區塊">:::</a></span>
+            <span>產業新聞</span>
+        </div>
+        <div class="title">
+            <span class="blinditem whiteColor font04"><a href="#" accesskey="C" title="中央內容區塊">:::</a></span>
+            <span class="font00 font-bold">產業新聞</span>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container">
+        <div class="MT20">
+            <span class="blinditem greyColor font04"><a href="#" accesskey="L" title="左側內容區塊">:::</a></span>
+            <div class="circle bggrey">編</div>
+            <span class="font-bold font01 greyColor">輯 區</span>
+        </div>
+
+        @using (Html.BeginForm("IndustryEdit", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-body">
+                <table width="100%" border="0" class="table-colored">
+                    <tbody>
+                        <tr>
+                            <td width="14%" align="right">標題:</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Title, new { @class = "keyin" })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">網址:</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Url, new { @class = "keyin" })
+                                @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">開始公開日期:</td>
+                            <td>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.Start_date, "{0:yyyy/MM/dd}", new { @class = "keyin datepicker", AUTOCOMPLETE = "OFF" })
+                                    @Html.ValidationMessageFor(model => model.Start_date, "", new { @class = "text-danger" })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">結束公開日期:</td>
+                            <td>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.End_date, "{0:yyyy/MM/dd}", new { @class = "keyin datepicker", AUTOCOMPLETE = "OFF" })
+                                    @Html.ValidationMessageFor(model => model.End_date, "", new { @class = "text-danger" })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">是否公開:</td>
+                            <td>
+                                <div class="input-group">
+                                    @Html.CheckBoxFor(model => model.Is_public, new { @class = "keyin left" })
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.TempId)
+                @Html.HiddenFor(model => model.Picture)
+                <button type="button" class="btn_del" onclick="window.location='@Url.Action("Industry")'">取消</button>
+                <button class="btn01 ML5" type="submit" id="sbmtbtn">儲存</button>
+            </div>
+        }
+    </div>
+</section>
+
+@section scripts {
+    <script>
+    </script>
+}

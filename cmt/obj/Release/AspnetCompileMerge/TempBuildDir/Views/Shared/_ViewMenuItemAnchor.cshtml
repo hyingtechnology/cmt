@@ -1,0 +1,10 @@
+﻿@model IEnumerable<cmt.DTOs.NewsDTO>
+
+@{
+
+    foreach (var m in Model)
+    {
+        <a>@Html.ActionLink(m.Title,  m.Id.ToString(), "Presentation")</a>
+    }
+
+}

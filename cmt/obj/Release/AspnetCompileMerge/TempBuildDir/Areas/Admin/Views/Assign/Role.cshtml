@@ -1,0 +1,80 @@
+﻿@model cmt.Areas.Admin.ViewModels.RoleVM
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section id="header">
+    <div class="backoverlay">
+        <div class="bread">
+            <span class="blinditem whiteColor"><a href="#" accesskey="R" title="右方內容區塊">:::</a></span>
+            <span>設定身份</span>
+        </div>
+        <div class="title">
+            <span class="blinditem whiteColor font04"><a href="#" accesskey="C" title="中央內容區塊">:::</a></span>
+            <span class="font00 font-bold">設定身份</span>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="MT20">
+            <span class="blinditem greyColor font04"><a href="#" accesskey="L" title="左側內容區塊">:::</a></span>
+            <div class="circle bggrey">編</div>
+            <span class="font-bold font01 greyColor">輯 區</span>
+        </div>
+
+        @using (Html.BeginForm("RoleEdit", "Assign", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="modal-body">
+                <table width="100%" border="0" class="table-colored">
+                    <tbody>
+                        <tr>
+                            <td width="14%" align="right">帳號:</td>
+                            <td>@Model.Users.UserAccount</td>
+                        </tr>
+                        <tr>
+                            <td width="14%" align="right">使用者名稱:</td>
+                            <td>@Model.Users.UserNickname</td>
+                        </tr>
+                        <tr>
+                            <td width="14%" align="right">Email:</td>
+                            <td>@Model.Users.UserEmail</td>
+                        </tr>
+                        <tr>
+                            <td width="14%" align="right">角色:</td>
+                            <td>
+                                @{
+
+                                    @Html.DropDownList("roles", Model.codeTables, new { })
+
+
+
+                                }
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn_del" onclick="window.location='@Url.Action("MemberList")'">取消</button>
+                <button class="btn01 ML5" type="submit" id="sbmtbtn">儲存</button>
+
+            </div>
+            @Html.Hidden("UserGuid", Model.Users.UserGuid, new { });
+        }
+    </div>
+</section>
+
+<style type="text/css">
+
+    .sp {
+        display: inline-block;
+        vertical-align: middle;
+    }
+</style>

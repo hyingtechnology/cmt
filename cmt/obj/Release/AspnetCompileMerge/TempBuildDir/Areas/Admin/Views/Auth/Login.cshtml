@@ -1,0 +1,81 @@
+﻿@model cmt.Areas.Admin.ViewModels.LoginVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>台灣循環材料展示館後台</title>
+    <!-- CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous" />
+    @Styles.Render("~/Content/admincss")
+    <!--ICO-->
+    <link rel="Shortcut Icon" type="image/x-icon" href="@Url.Content("~/Content/images/ico/favicon.ico")" />
+    <noscript>
+        @Styles.Render("~/Content/NoJSstylecss")
+    </noscript>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="noscripthint redColor text-center"><h4>您的瀏覽器不支援或關閉javascript，建議開啟javascript支援或使用有支援javascript的瀏覽器以獲得更好的網頁瀏覽經驗。</h4></div>
+        <div class="login_backoverlay">
+            <div class="container">
+                <div class="row MT110">
+
+                    <div class="col-md-6 col-sm-12">
+                        <span class="blinditem greyColor font04 MR5"><a href="#" accesskey="L" title="左方功能區塊">:::</a></span>
+                        <img src="@Url.Content("~/Content/images/logo.png")" loading="eager" class="img-responsive" title="台灣循環材料展示館" alt="台灣循環材料展示館LOGO" />
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <table width="100%" border="0" class="table-padding">
+                                <tbody>
+
+                                    <tr>
+                                        <td align="right">帳號：</td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.account, new { @class = "keyin" })@Html.ValidationMessageFor(model => model.account, "", new { @class = "text-danger" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">密碼：</td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.password, new { @class = "keyin", @type = "password" })@Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="right">
+                                            <button type="reset" class="btn_del MR5">清除</button>
+                                            <button type="submit" class="btn01">登入</button>
+                                            @Html.ValidationMessage("message")
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>Copyright @@2020  All Rights Reserved.</footer>
+    </div><!--wrapper-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/unobtrusive")
+    @Scripts.Render("~/bundles/validateunobtrusive")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="@Url.Content("~/Scripts/jquery.scrollmagic.min.js")" crossorigin="anonymous"></script>
+    @*@Scripts.Render("~/bundles/countUp")*@
+
+    <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="position: absolute; top: 444.8px; left: 144.2px; z-index: 1; display: none;"><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"><a class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click" title="Prev"><span class="ui-icon ui-icon-circle-triangle-w">Prev</span></a><a class="ui-datepicker-next ui-corner-all" data-handler="next" data-event="click" title="Next"><span class="ui-icon ui-icon-circle-triangle-e">Next</span></a><div class="ui-datepicker-title"><span class="ui-datepicker-month">June</span>&nbsp;<span class="ui-datepicker-year">2020</span></div></div><table class="ui-datepicker-calendar"><thead><tr><th scope="col" class="ui-datepicker-week-end"><span title="Sunday">Su</span></th><th scope="col"><span title="Monday">Mo</span></th><th scope="col"><span title="Tuesday">Tu</span></th><th scope="col"><span title="Wednesday">We</span></th><th scope="col"><span title="Thursday">Th</span></th><th scope="col"><span title="Friday">Fr</span></th><th scope="col" class="ui-datepicker-week-end"><span title="Saturday">Sa</span></th></tr></thead><tbody><tr><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">1</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">2</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">3</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">4</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">5</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">6</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">7</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">8</a></td><td class=" ui-datepicker-days-cell-over  ui-datepicker-today" data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default ui-state-highlight" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">9</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">10</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">11</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">12</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">13</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">14</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">15</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">16</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">17</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">18</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">19</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">20</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">21</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">22</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">23</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">24</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">25</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">26</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">27</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">28</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">29</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="5" data-year="2020"><a class="ui-state-default" href="https://localhost:44326/Admin/News/ExhibitionEdit/29#">30</a></td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td></tr></tbody></table></div><div class="tox tox-silver-sink tox-tinymce-aux" style="position: relative;"></div>
+
+</body>
+</html>

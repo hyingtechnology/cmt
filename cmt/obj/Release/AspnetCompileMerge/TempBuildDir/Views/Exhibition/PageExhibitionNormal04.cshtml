@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "台灣循環材料展示館-AI視覺辨識";
+    ViewBag.CentralBlock = "section-01";
+}
+
+<section id="section-01" class="image-idea" >
+
+    <div class="bread">
+        <span class="blinditem"><a href="#" accesskey="R" title="右方內容區塊">:::</a></span>
+        <span>線上展覽</span> > 循環材料智慧科技 > AI視覺辨識</span>
+    </div>
+    <div class="container">
+        <div class="title text-center">
+            <span class="blinditem greyColor font04"><a href="#" accesskey="C" title="中央內容區塊">:::</a></span>
+            <h1><span class="greenColor">AI視覺辨識</span></h1>
+        </div>
+        <div class="card-number MT30"  style="float: left">
+            <div class="row vertical-align">
+                <div class="col-md-6 col-sm-12">
+                    <img src="../Content/images/img-ai-01.png" class="img-responsive img-center" width="400" alt="特徵擷取資料來建構模型自學照片" title="特徵擷取資料來建構模型自學" />
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="lineheight01 font03">AI的深度學習是透過神經網路（Neural Network）的方式來運作，神經網路與人類腦運作的方式相仿，運作方式是透過一個神經元連著一個神經元傳遞訊號，人腦與深度學習的差異在於人腦輸入的是生物電流，深度學習則是輸入參數，包含資料參數、權重（weight），及誤差（bias）等，深度學習的路徑為資料蒐集與擷取→特徵擷取資料來建構模型自學→模型運算後得到答案，與傳統深度學習不一樣，特別是在特徵擷取的部分，交由神經網路處理，透過反覆運算逐漸產出關鍵的特徵，且不斷改進模型本身權重，最後產生預測模型。值得一提的是，這個步驟仰賴大量的反覆運算，也就是為什麼深度學習領域到這幾年隨著運算單元(GPU) 技術的突破，才加大應用領域。</div>
+                </div>
+            </div>
+            <div class="row vertical-align">
+                <div class="col-md-6 col-sm-12">
+                    <img src="../Content/images/img-ai-02.png" class="img-responsive img-center" width="400" alt="減少雜訊的前置處理之技術照片" title="減少雜訊的前置處理之技術" />
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="lineheight01 font03">
+                        本計畫運用深度學習的特性，識別循環材料物流過程中的物料影像，在辨識物料的判別中，需要考慮到物料所處的環境在於雜訊與干擾複雜的室外環境，例如: 物料在運輸過程中產生晃動以致影像模糊、天候因素導入影片判別受到干擾等問題，因此透過本計畫開發的減少雜訊的前置處理之技術，例如: 去除粉塵、雨滴，及其他干擾因素等，後續才進行AI深度學習的訓練。深度學習搭配前置處理的技術，用以提升物料影像辨的識準確度。
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="card-number">
+                        <div class="font02 font-bold text-center MB20">出廠</div>
+                        <img src="../Content/images/img-verify-01.png" class="img-responsive img-center" width="250" alt="" />
+                        <div class="font03 lineheight01 MT20"><b>紀錄物料出廠影像</b><br />記錄出廠時的物料重量、影像AI辨識，透過重量來推算物料是否有參雜其他物料，此外，抽檢出廠物料，檢驗物料的工程品質與環保安全是否有達到循環材料標準，讓物料循環使用，減少仰賴國外進口。 </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="card-number">
+                        <div class="font02 font-bold text-center MB20">進廠</div>
+                        <img src="../Content/images/img-verify-02.png" class="img-responsive img-center" width="250" alt="" />
+                        <div class="font03 lineheight01 MT20">
+                            <b>
+                                紀錄物料進廠影像，電腦比對進出廠的影像資料
+                            </b><br />進廠時，紀錄進廠的影像與重量，並與出廠的資料做比對，確認物料是否一致，確保物料品質在往後的運用上無疑慮。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="font03 lineheight01">
+                運送物料的車輛裝有影像紀錄設備，會拍攝車輛離出發地(出廠)時物料的影像與車輛抵達目的地(進廠)時的物料影像，影像資料回傳至電腦主機，輸入至影像辨識模型中進行推論與判讀，如果兩者影像被電腦判斷為異常(影像相似程度低於統計值)，則表示運送過程中物料有可能被替換或汙染，因此系統會通知稽核人員釐清運輸路途上是否發生物料替換或其他事件。
+            </div>
+            <div class="font03 lineheight01 MT10">系統也會做不同程度的示警，等級分為: 嚴重異常、異常與可能異常，示警等級的分類有助於管理人員進行不同的後續處理流程。</div>
+            <div class="font03 lineheight01 MT10">未來深度學習的資料與其他資訊系統進一步整合後，將成為循環物料驗證平台，可檢驗物料的工程品質與環保安全是否有達到循環材料標準，確保物料品質在往後的運用上獲得信任。</div>
+        </div>
+    </div>
+</section>

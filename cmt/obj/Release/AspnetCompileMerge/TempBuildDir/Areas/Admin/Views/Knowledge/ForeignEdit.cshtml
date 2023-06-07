@@ -1,0 +1,250 @@
+﻿@model cmt.Areas.Admin.ViewModels.ForeignEditVM
+
+@{
+    ViewBag.Title = "國外文獻";
+}
+
+<section id="header">
+    <div class="backoverlay">
+        <div class="bread">
+            <span class="blinditem whiteColor"><a href="#" accesskey="R" title="右方內容區塊">:::</a></span>
+            <span>國外文獻</span>
+        </div>
+        <div class="title">
+            <span class="blinditem whiteColor font04"><a href="#" accesskey="C" title="中央內容區塊">:::</a></span>
+            <span class="font00 font-bold">國外文獻</span>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container">
+        <div class="MT20">
+            <span class="blinditem greyColor font04"><a href="#" accesskey="L" title="左側內容區塊">:::</a></span>
+            <div class="circle bggrey">編</div>
+            <span class="font-bold font01 greyColor">輯 區</span>
+        </div>
+
+        @using (Html.BeginForm("ForeignEdit", "Knowledge", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-body">
+                <table width="100%" border="0" class="table-colored">
+                    <tbody>
+                        <tr>
+                            <td width="14%" align="right">標題:</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Title, new { @class = "keyin" })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">內容:</td>
+                            <td>
+                                <div class="input-group">
+                                    @Html.TextAreaFor(model => model.Content, new { @class = "keyin left tinymce" })
+                                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">示意圖:</td>
+                            <td>
+                                <input type="file" name="PictureFile" accept=".tiff, .tif, .gif, .bmp, .png, .jpeg, .jpg" />
+                                @Html.ValidationMessageFor(model => model.PictureFile, "", new { @class = "text-danger" })
+                                @if (Model.Picture != null)
+                                {
+                                    <a href="@Url.Action("DownloadPicture", new { id = Model.Id, fileName = Model.Picture })" class="greenColor fa fa-download">下載</a>
+                                    <i class="ML10 redColor fa fa-times-circle" href="#" onclick="if (confirm('確實要刪除嗎?')) file.deletePicture(this, '@Model.Id', '@Model.Picture')"> 刪除</i>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">開始公開日期:</td>
+                            <td>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.Start_date, "{0:yyyy/MM/dd}", new { @class = "keyin datepicker", AUTOCOMPLETE = "OFF" })
+                                    @Html.ValidationMessageFor(model => model.Start_date, "", new { @class = "text-danger" })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">結束公開日期:</td>
+                            <td>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.End_date, "{0:yyyy/MM/dd}", new { @class = "keyin datepicker", AUTOCOMPLETE = "OFF" })
+                                    @Html.ValidationMessageFor(model => model.End_date, "", new { @class = "text-danger" })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">是否公開:</td>
+                            <td>
+                                <div class="input-group">
+                                    @Html.CheckBoxFor(model => model.Is_public, new { @class = "keyin left" })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">附件:</td>
+                            <td>
+                                <div class="input-group">
+                                    <table>
+                                        <tbody width="100%" border="0" class="table-colored">
+                                            <tr>
+                                                <td><input type="file" name="AttachFiles" /></td>
+                                                <td align="right">
+                                                    <button type="button" class="fa fa-plus btn01" onclick="attachUpload.add(this)"></button>
+                                                    <button type="button" class="fa fa-minus btn_del" style="display:none;" onclick="attachUpload.remove(this);"></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table>
+                                        @foreach (var item in Model.Attaches)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <a href="@Url.Action("DownloadFile", new { id = Model.Id, fileName = item.Name })">@item.Name</a>
+                                                    <i class="ML10 fa fa-times-circle redColor" href="#" onclick="if (confirm('確實要刪除嗎?')) file.deleteFile(this, '@Model.Id', '@item.Name')"> 刪除</i>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.TempId)
+                <button type="button" class="btn_del" onclick="window.location='@Url.Action("Foreign")'">取消</button>
+                <button class="btn01 ML5" type="submit" id="sbmtbtn">儲存</button>
+            </div>
+        }
+    </div>
+</section>
+
+@section scripts {
+    <script>
+        var file = {
+            deletePicture: function (obj, id, name) {
+                $.ajax({
+                    url: "@Url.Action("DeletePicture")" + `/${id}?fileName=${name}`,
+                    type: "POST",
+                    dataType: 'json',
+                    headers:{
+					'RequestVerificationToken':'@CommonRazorFunctions.GetAntiForgeryToken()'
+				    },
+                    success: function (response) {
+                        alert(response.responseText);
+                        var btnDelete = $(obj);
+                        var currentRow = btnDelete.parent().parent();
+                        currentRow.remove();
+                    },
+                    error: function () {
+                        alert('error');
+                    }
+                });
+            },
+            deleteFile: function (obj, id, name) {
+                $.ajax({
+                    url: "@Url.Action("DeleteFile")" + `/${id}?fileName=${name}`,
+                    type: "POST",
+                    dataType: 'json',
+                    headers:{
+					'RequestVerificationToken':'@CommonRazorFunctions.GetAntiForgeryToken()'
+				    },
+                    success: function (response) {
+                        alert(response.responseText);
+                        var btnDelete = $(obj);
+                        var currentRow = btnDelete.parent().parent();
+                        currentRow.remove();
+                    },
+                    error: function () {
+                        alert('error');
+                    }
+                });
+            },
+        }
+        var attachUpload = {
+            add: function (obj) {
+                var btnPlus = $(obj);
+                var currentRow = btnPlus.parent().parent();
+                currentRow.find('.fa-minus').show();
+
+                var newRow = currentRow.clone();
+                newRow.find('.fa-minus').hide();
+                var tbody = $(currentRow).parent();
+                btnPlus.remove();
+                newRow.appendTo(tbody);
+            },
+            remove: function (obj) {
+                var btnMinus = $(obj);
+                var currentRow = btnMinus.parent().parent();
+                currentRow.remove();
+            }
+        }
+
+        $(function () {
+            tinymce.init({
+                menubar: false,
+                selector: "textarea",
+                language: "zh_TW",
+                plugins: [
+                    "advlist autolink lists image link  charmap print preview hr anchor pagebreak",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen",
+                    "insertdatetime nonbreaking save table directionality",
+                    "emoticons template paste textpattern"
+                ],
+                toolbar1: "insertfile undo redo | styleselect | bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+                height: "400",
+                images_upload_handler: function (blobInfo, success, failure, progress) {
+                    var xhr, formData;
+
+                    xhr = new XMLHttpRequest();
+                    xhr.withCredentials = false;
+                    xhr.open('POST', '@Url.Action("UploadContentImage", "Knowledge", new { id = Model.Id != 0 ? Model.Id.ToString() : Model.TempId }, Request.Url.Scheme)');
+                    xhr.setRequestHeader("RequestVerificationToken", '@CommonRazorFunctions.GetAntiForgeryToken()');
+                    xhr.upload.onprogress = function (e) {
+                        progress(e.loaded / e.total * 100);
+                    };
+
+                    xhr.onload = function () {
+                        var json;
+
+                        if (xhr.status < 200 || xhr.status >= 300) {
+                            failure('HTTP Error: ' + xhr.status);
+                            return;
+                        }
+
+                        json = JSON.parse(xhr.responseText);
+
+                        if (!json || typeof json.location != 'string') {
+                            failure('Invalid JSON: ' + xhr.responseText);
+                            return;
+                        }
+
+                        success(json.location);
+                    };
+
+                    xhr.onerror = function () {
+                        failure('Image upload failed due to a XHR Transport error. Code: ' + xhr.status);
+                    };
+
+                    formData = new FormData();
+                    formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+                    xhr.send(formData);
+                },
+                paste_data_images: true,
+                relative_urls: false
+            });
+
+            $(".datepicker").datepicker({
+                dateFormat: "yy/mm/dd"
+            });
+        });
+    </script>
+}

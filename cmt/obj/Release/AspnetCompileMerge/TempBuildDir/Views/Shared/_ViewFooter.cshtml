@@ -1,0 +1,30 @@
+﻿<footer>
+    <div class="container">
+        <div class="row vertical-align">
+            <div class="col-md-3"><a href="https://www.moeaidb.gov.tw/ctlr?PRO=idx2015"><img src="@Url.Content("~/Content/images/logo-idb.jpg")" title="前往經濟部工業局" alt="經濟部工業局logo" width="250" /></a></div>
+            <div class="col-md-9">
+                <a href="mailto:cmvm@cmvm.org.tw">意見信箱</a>｜<a href="mailto:cmvmService@cmvm.org.tw">服務申請</a>｜<a href='@Url.Action("PrivacyPolicy", "Home", new {}, Request.Url.Scheme)'>隱私權保護政策</a>｜<a href='@Url.Action("CyberSecurityPolicy", "Home", new {}, Request.Url.Scheme)'>網站安全政策</a>｜
+                <a href="https://www.moeaidb.gov.tw/ctlr?PRO=default.OpenInformation">網站資料開放宣告</a>｜<a target="_blank" rel="noopener noreferrer" href="https://cmvm.org.tw/TIDS">前端資訊系統-行控中心</a>｜<a target="_blank" href="https://www.cmvm.org.tw/platform" rel="noopener noreferrer">文件品質管理系統</a><br /><a target="_blank" href="https://cmvm.org.tw/GEO" rel="noopener noreferrer">船舶查詢</a>｜
+
+
+                <br />
+                為求最佳瀏覽效果，請使用Chrome 81以上瀏覽器，建議瀏覽解析度1024x768以上 最新更新日期:@ViewBag.LastUpdatedDate<br />
+                地址：10651 台北市大安區信義路三段41-3號｜ 委辦單位：經濟部工業局｜ 工業技術研究院維護
+                @{
+                    if (ViewBag.isManager)
+                    {
+                        <span>｜ </span> @Html.ActionLink("後臺管理", "ManagerCenter", "News", new { Area = "Admin" }, new { })
+                    }
+                }
+
+                <br />瀏覽人次:@ViewBag.PageViewCount
+                Copyright ©2020 All Rights Reserved.
+            </div>
+            <div>
+                <a target="_blank" rel="noopener noreferrer" href="https://accessibility.moda.gov.tw/Applications/Detail?category=20200728171027" title="無障礙網站">
+                    <img src="@Url.Content("~/Content/images/accessibility.jpg")" border="0" width="88" height="31" alt="通過A無障礙網頁檢測" />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
